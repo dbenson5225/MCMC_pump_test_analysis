@@ -8,9 +8,11 @@ This repository contains a Python-based code to perform Markov-chain Monte Carlo
 - time
 - os
 - multiprocessing
-- 
+- h5py
 
-The Python is contained in the script "step_test_mcmc.py".  This file needs to access a user-created file, in the current working directory, called "well_data.txt", which looks like:
+If you prefer to have an entire environment file, I provide a yaml file.
+
+The Python is contained in the script "step_test_mcmc.py".  This file needs to access a user-created file, in the current working directory, called "well_data.txt", which looks like the following.  On each line there is a data value followed by a comment for readability. Only the first thing matters.
 
 True        # optimize flag
 
@@ -52,7 +54,7 @@ False        # IES flag
 The first time through, you should have the first 4 flags set to True - this will perform 1) classical Levenberg-Marquardt optimization, then 2) a minimization of your specified -log-likelihood function, then 3) the MCMC "optimization" based on the starting neighborhood defined by the minimization(s). Each step saves a file of the results, so you may turn to False if good results were gotten and you want to save time. The IES flag does nothing at the present time.
 The next two lines are the drawdown data, and the variable pumping rates (all in cinsistent units, i.e. feet, days, cubic feet per day).  The next 8 lines define the well parameters, and the last 3 define a pumping scenario for predicitive runs.
 
-Within the Python code are a few lines that the user might want to modify.  These all reside in the ___main___ part of the program.  Specifically, one may change the "normalized"pumping rate for predictions, which for the purposes of the published paper was 1 GPM per vertical foot of screen:
+Within the Python code are a few lines that the user might want to modify.  These all reside in the __main__ part of the program.  Specifically, one may change the "normalized"pumping rate for predictions, which for the purposes of the published paper was 1 GPM per vertical foot of screen:
 
     norm_pump_rate = 1.0*2*3.14*r*screen_intvl*por*1440/7.48   # 1 gpm per ft^2 of screen converted to ft^3/day
 
@@ -68,4 +70,4 @@ Finally, the user may want to change the starting values and/or upper and lower 
     lower_bound    = np.array([1.e-3,     1.,  -60,  1.0,  -10.])
     upper_bound    = np.array([  0.5,  2000.,    0,  5.0,    5.])
 
-Once the user has created (or copied from these repositories) the well_data.txt, and drawdown and pumping rate files, then simply type "python step_test_mcmc.py at the command line.  The optimized, minimized, and MCMC "parameters" will be displayed on the screen as well as written to disk.  The entire MCMC chain is written to disk in an h5 file, which can be extremely big.  But if the chain is successful, you may turn that flag to False and never need to run the MCMC again.  Any future scenarios that you would like to test can just read the h5 file from disk.  
+Once the user has created (or copied from these repositories) the well_data.txt, and drawdown and pumping rate files, then simply type "python step_test_mcmc.py at the command line.  The optimized, minimized, and MCMC "parameters" will be displayed on the screen as well as written to disk.  The entire MCMC chain is written to disk in an h5 file, which can be extremely big.  But if the chain is successful, you may turn the MCMC flag in "well_data.txt" to False and never need to run the MCMC again.  Any future scenarios that you would like to test can just read the h5 file from disk.  
