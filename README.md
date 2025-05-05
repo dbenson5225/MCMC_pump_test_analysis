@@ -13,23 +13,41 @@ This repository contains a Python-based code to perform Markov-chain Monte Carlo
 The Python is contained in the script "step_test_mcmc.py".  This file needs to access a user-created file, in the current working directory, called "well_data.txt", which looks like:
 
 True        # optimize flag
+
 True        # minimize flag
+
 True        # MCMC flag
+
 True        # prediction flag
+
 False        # IES flag
+
 226_dd.txt  # Drawdown file with columns of time, drawdown
+
 226_Q.txt   # Well discahrge file with olumns of start time for Q_i, then Q_i for i pumping rates
+
 0.5         # Well radius (ft)
+
 241         # screened interval length (ft)
+
 1086        # Depth to static water (ft)
+
 1720        # Total well (i.e., discharge pipe) depth 
+
 0.417       # Piping diameter (ft)
+
 0.7         # Pump efficiency (NOT well efficiency) 
+
 120         # Hazen-Williams friction for piping
+
 0.3         # porosity of gravel pack
+
 3.0         # duration of a single pumping episode (for prediction)
+
 4000        # total pump hours per year (for prediction)
+
 0.1         # electricity cost in dollars per kW (for prediction)
+
 
 The first time through, you should have the first 4 flags set to True - this will perform 1) classical Levenberg-Marquardt optimization, then 2) a minimization of your specified -log-likelihood function, then 3) the MCMC "optimization" based on the starting neighborhood defined by the minimization(s). Each step saves a file of the results, so you may turn to False if good results were gotten and you want to save time. The IES flag does nothing at the present time.
 The next two lines are the drawdown data, and the variable pumping rates (all in cinsistent units, i.e. feet, days, cubic feet per day).  The next 8 lines define the well parameters, and the last 3 define a pumping scenario for predicitive runs.
