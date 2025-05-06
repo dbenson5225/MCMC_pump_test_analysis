@@ -1,7 +1,7 @@
 # MCMC_pump_test_analysis (work in progress)
 Python-based MCMC analysis of step-drawdown pumping test parameters and operational costs
 
-This repository contains a Python-based code to perform Markov-chain Monte Carlo (MCMC) analysis of step-drawdown puming tests.  The code is easily modified to do any sort of variable-rate pumping test.  The code uses an off-the-shelf MCMC sampler called emcee  (https://emcee.readthedocs.io). You will need to have already intalled Python 3.X, and you will have to install the emcee package using standard methods (i.e. type "pip install emcee" at the command line or use conda).  To speed up various parts of this process we also invoke parallel processing using the package multiprocessing, and saves the MCMC chain as you go using the h5 protocol (so install these two packages as well). To summarize, we use the following packages, so have them installed before running:
+This repository contains a Python-based code to perform Markov-chain Monte Carlo (MCMC) analysis of step-drawdown pumping tests.  The code is easily modified to do any sort of variable-rate or constant-rate pumping tests.  The code uses an off-the-shelf MCMC sampler called emcee  (https://emcee.readthedocs.io). You will need to have already intalled Python 3.X, and you will have to install the emcee package using standard methods (i.e. type "pip install emcee" at the command line or use conda).  To speed up various parts of this process, we also invoke parallel processing using the package multiprocessing, and save the MCMC chain on-the-fly using the h5 protocol (so install these two packages as well). To summarize, we use the following packages, so have them installed before running:
 - numpy
 - scipy
 - matplotlib
@@ -15,9 +15,7 @@ If you prefer to have an entire environment file, I provide a yaml file.
 The Python is contained in the script "step_test_mcmc.py".  This file needs to access a user-created file, in the current working directory, called "well_data.txt", which looks like the following.  On each line there is a data value followed by a comment for readability. Only the first thing matters.
 
 True        # optimize flag
-
 True        # minimize flag
-
 True        # MCMC flag
 
 True        # prediction flag
