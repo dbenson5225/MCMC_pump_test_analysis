@@ -1,0 +1,18 @@
+True        # optimize flag
+True        # minimize flag
+True        # MCMC flag
+True        # prediction flag
+False        # IES flag
+226_dd.txt  # Drawdown file with columns of time, drawdown
+226_Q.txt   # Well discahrge file with olumns of start time for Q_i, then Q_i for i pumping rates
+0.5         # Well radius (ft)
+241         # screened interval length (ft)
+1086        # Depth to static water (ft)
+1720        # Total well (i.e., discharge pipe) depth 
+0.417       # Piping diameter (ft)
+0.7         # Pump efficiency (NOT well efficiency) 
+120         # Hazen-Williams friction for piping
+0.3         # porosity of gravel pack
+3.0         # duration of a single pumping episode (for prediction)
+4000        # total pump hours per year (for prediction)
+0.1         # electricity cost in dollars per kW (for prediction)
