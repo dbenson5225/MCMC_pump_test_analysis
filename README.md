@@ -1,4 +1,6 @@
-# MCMC_pump_test_analysis (work in progress)
+# MCMC_pump_test_analysis (updated 1/1/26)
+updates: 1/1/2026 modified fft convolution routine for ~4x speed.
+
 Python-based MCMC analysis of step-drawdown pumping test parameters and operational costs
 
 This repository contains Python-based codes to perform Markov-chain Monte Carlo (MCMC) analysis of step-drawdown pumping tests.  The codes are easily modified to do any sort of variable-rate or constant-rate pumping tests.  The codes use an off-the-shelf MCMC sampler called emcee (https://emcee.readthedocs.io). You will need to have already intalled Python 3.X, and you will have to install the emcee package using standard methods (i.e. type "pip install emcee" at the command line or use conda).  To speed up various parts of this process, we also invoke parallel processing using the package multiprocessing, and save the MCMC chain on-the-fly using the h5 protocol (so install these two packages as well). To summarize, we use the following packages, so have them installed before running:
